@@ -1,0 +1,2 @@
+make:
+	gcc host.c
