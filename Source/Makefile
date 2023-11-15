@@ -1,9 +1,9 @@
 make:
 	gcc host.c -o host
 	gcc virus.c -o virus
-	gcc clean.c -o clean
+	gcc test.c -o test
 clean:
-	rm host virus seed tmp clean
+	rm host virus seed tmp test
 seed:
 	cp virus seed
 	printf ‘\xde\xad\xbe\xef’ >> seed

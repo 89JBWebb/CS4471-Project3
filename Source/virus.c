@@ -37,7 +37,7 @@ int main(int argc, char **argv){
     //write to new file
     char buffer [4];
     int fd = open(argv[0], O_RDONLY);
-    int out = open("./tmp", O_RDWR | O_CREAT, 0777);
+    int out = open("tmp", O_RDWR | O_CREAT, 0777);
     int charRead = read(fd, buffer, 4);
     char deadbeef [4] = {0xde,0xad,0xbe,0xef};
 
@@ -61,6 +61,10 @@ int main(int argc, char **argv){
     while(read(TBI, buffer, 4) > 0){
         write(out, buffer, 4);
     }
+
+    //rename file and delete old one
+    remove(argv[1]);
+    rename("tmp", argv[1]);
 
     //read binary file
     //while not at end
